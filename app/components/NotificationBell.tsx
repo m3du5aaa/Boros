@@ -2,6 +2,7 @@
 
 import { useState } from 'react';
 import styles from './NotificationBell.module.css';
+import NotificationSettingsModal from './NotificationSettingsModal';
 
 type Tab = 'all' | 'personal' | 'market';
 type NotifTab = 'personal' | 'market';
@@ -147,6 +148,7 @@ function UnreadIcon() {
 export default function NotificationBell() {
   const [notifications, setNotifications] = useState<Notification[]>(INITIAL_NOTIFICATIONS);
   const [isOpen, setIsOpen] = useState(false);
+  const [isSettingsOpen, setIsSettingsOpen] = useState(false);
   const [activeTab, setActiveTab] = useState<Tab>('all');
 
   const unreadCount = notifications.filter((n) => !n.read).length;
@@ -189,7 +191,11 @@ export default function NotificationBell() {
       >
         <div className={styles.header}>
           <span className={styles.headerTitle}>Notifications</span>
-          <button className={styles.iconButton} aria-label="Notification settings">
+          <button
+            className={styles.iconButton}
+            aria-label="Notification settings"
+            onClick={() => setIsSettingsOpen(true)}
+          >
             <GearIcon />
           </button>
           <button className={styles.markAllRead} onClick={markAllRead}>
@@ -251,6 +257,9 @@ export default function NotificationBell() {
           )}
         </div>
       </div>
+      {isSettingsOpen && (
+        <NotificationSettingsModal onClose={() => setIsSettingsOpen(false)} />
+      )}
     </>
   );
 }

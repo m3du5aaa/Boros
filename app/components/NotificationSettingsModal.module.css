@@ -1,0 +1,804 @@
+/* ── Overlay ──────────────────────────────────────────────────── */
+.overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 70;
+  background: var(--boros-background-overlay);
+}
+
+/* ── Modal card ───────────────────────────────────────────────── */
+.modal {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 71;
+  width: calc(100% - 2rem);
+  max-width: 560px;
+  max-height: 85vh;
+  display: flex;
+  flex-direction: column;
+  background: var(--boros-background-primary);
+  border: 1px solid var(--boros-border-primary);
+  border-radius: var(--boros-radius-rounded-lg);
+  overflow: hidden;
+  box-shadow: 0 24px 64px rgba(0, 0, 0, 0.6);
+}
+
+/* ── Header ───────────────────────────────────────────────────── */
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--boros-layout-padding-modals);
+  border-bottom: 1px solid var(--boros-border-primary);
+  flex-shrink: 0;
+}
+
+.title {
+  font-size: var(--boros-primitive-text-size-base-small-heading);
+  font-weight: 600;
+  color: var(--boros-text-primary);
+  letter-spacing: 0.01em;
+}
+
+.closeButton {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.75rem;
+  height: 1.75rem;
+  border-radius: var(--boros-radius-rounded-md);
+  color: var(--boros-icon-secondary);
+  font-size: 1.25rem;
+  line-height: 1;
+  cursor: pointer;
+  transition: color 150ms ease, background 150ms ease;
+}
+
+.closeButton:hover {
+  color: var(--boros-icon-primary);
+  background: var(--boros-icon-icon-background);
+}
+
+/* ── Scrollable body ──────────────────────────────────────────── */
+.body {
+  flex: 1;
+  overflow-y: auto;
+  padding: var(--boros-layout-padding-modals);
+  display: flex;
+  flex-direction: column;
+  gap: var(--boros-spacing-layout-xl-between-cards);
+  scrollbar-width: thin;
+  scrollbar-color: var(--boros-border-secondary) transparent;
+}
+
+.body::-webkit-scrollbar {
+  width: 4px;
+}
+
+.body::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.body::-webkit-scrollbar-thumb {
+  background: var(--boros-border-secondary);
+  border-radius: var(--boros-radius-rounded-full);
+}
+
+/* ── Section ──────────────────────────────────────────────────── */
+.section {
+  display: flex;
+  flex-direction: column;
+  gap: var(--boros-spacing-component-lg);
+}
+
+.sectionTitle {
+  font-size: var(--boros-primitive-text-size-xs-caption);
+  font-weight: 600;
+  color: var(--boros-text-inactive);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+/* ── Telegram ─────────────────────────────────────────────────── */
+.telegramRow {
+  display: flex;
+  align-items: center;
+  gap: var(--boros-spacing-component-md);
+  padding: var(--boros-spacing-component-lg);
+  background: var(--boros-background-surface);
+  border: 1px solid var(--boros-border-primary);
+  border-radius: var(--boros-radius-rounded-md);
+}
+
+.greenDot {
+  width: 0.5rem;
+  height: 0.5rem;
+  border-radius: var(--boros-radius-rounded-full);
+  background: var(--boros-text-success);
+  flex-shrink: 0;
+}
+
+.telegramInfo {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 0.125rem;
+}
+
+.telegramHandle {
+  font-size: var(--boros-primitive-text-size-sm-default);
+  font-weight: 600;
+  color: var(--boros-text-primary);
+}
+
+.telegramSub {
+  font-size: var(--boros-primitive-text-size-xs-caption);
+  color: var(--boros-text-secondary);
+}
+
+.unlinkButton {
+  font-size: var(--boros-primitive-text-size-xs-caption);
+  font-weight: 600;
+  color: var(--boros-text-error);
+  padding: var(--boros-spacing-component-xs) var(--boros-spacing-component-md);
+  border: 1px solid var(--boros-border-error);
+  border-radius: var(--boros-radius-rounded-md);
+  cursor: pointer;
+  transition: background 150ms ease;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.unlinkButton:hover {
+  background: var(--boros-background-negative-or-short-weak);
+}
+
+/* ── Alert delivery matrix ────────────────────────────────────── */
+.matrixWrapper {
+  border: 1px solid var(--boros-border-primary);
+  border-radius: var(--boros-radius-rounded-md);
+  overflow: hidden;
+}
+
+.matrix {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.matrixLabelCol {
+  width: 50%;
+}
+
+.matrixColHead {
+  font-size: var(--boros-primitive-text-size-xs-caption);
+  font-weight: 500;
+  color: var(--boros-text-inactive);
+  text-align: center;
+  padding: var(--boros-spacing-component-md) var(--boros-spacing-component-lg);
+  border-bottom: 1px solid var(--boros-border-primary);
+}
+
+.matrixRow {
+  border-bottom: 1px solid var(--boros-border-primary);
+  transition: background 150ms ease;
+}
+
+.matrixRow:last-child {
+  border-bottom: none;
+}
+
+.matrixRow:hover {
+  background: var(--boros-background-surface);
+}
+
+.matrixLabel {
+  padding: var(--boros-spacing-component-md) var(--boros-spacing-component-lg);
+  font-size: var(--boros-primitive-text-size-sm-default);
+  color: var(--boros-text-secondary);
+}
+
+.matrixCell {
+  text-align: center;
+  padding: var(--boros-spacing-component-md);
+}
+
+.checkbox {
+  width: 0.875rem;
+  height: 0.875rem;
+  accent-color: var(--boros-tab-navigation-tab-active);
+  cursor: pointer;
+}
+
+.badgeCritical {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.125rem 0.375rem;
+  border-radius: var(--boros-radius-rounded-sm);
+  background: var(--boros-background-negative-or-short-weak);
+  border: 1px solid var(--boros-border-error);
+  color: var(--boros-text-error);
+  font-size: var(--boros-primitive-text-size-xs-caption);
+  font-weight: 600;
+}
+
+/* ── Custom price alerts ──────────────────────────────────────── */
+.customAlerts {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid var(--boros-border-primary);
+  border-radius: var(--boros-radius-rounded-md);
+  overflow: hidden;
+}
+
+.customAlertWrapper {
+  border-bottom: 1px solid var(--boros-border-primary);
+}
+
+.customAlertWrapper:last-child {
+  border-bottom: none;
+}
+
+.customAlert {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--boros-spacing-component-md);
+  padding: var(--boros-spacing-component-lg);
+  transition: background 150ms ease;
+}
+
+.customAlert:hover {
+  background: var(--boros-background-surface);
+}
+
+.customAlertMain {
+  display: flex;
+  align-items: center;
+  gap: var(--boros-spacing-component-sm);
+  flex: 1;
+  min-width: 0;
+  flex-wrap: wrap;
+}
+
+.customAlertPair {
+  font-size: var(--boros-primitive-text-size-sm-default);
+  font-weight: 600;
+  color: var(--boros-text-primary);
+  white-space: nowrap;
+}
+
+.alertTypePill {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.1rem 0.5rem;
+  border-radius: var(--boros-radius-rounded-full);
+  background: var(--boros-background-surface);
+  border: 1px solid var(--boros-border-secondary);
+  font-size: var(--boros-primitive-text-size-xs-caption);
+  color: var(--boros-text-secondary);
+  white-space: nowrap;
+}
+
+.customAlertThreshold {
+  font-size: var(--boros-primitive-text-size-sm-default);
+  font-weight: 500;
+  color: var(--boros-text-primary);
+  white-space: nowrap;
+}
+
+.alertActions {
+  display: flex;
+  align-items: center;
+  gap: var(--boros-spacing-component-xs);
+  flex-shrink: 0;
+}
+
+.alertIconBtn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.625rem;
+  height: 1.625rem;
+  border-radius: var(--boros-radius-rounded-md);
+  color: var(--boros-icon-secondary);
+  cursor: pointer;
+  transition: color 150ms ease, background 150ms ease;
+}
+
+.alertIconBtn:hover {
+  color: var(--boros-icon-primary);
+  background: var(--boros-icon-icon-background);
+}
+
+/* ── Inline expand panel ──────────────────────────────────────── */
+.alertExpanded {
+  display: flex;
+  align-items: center;
+  gap: var(--boros-spacing-component-md);
+  padding: var(--boros-spacing-component-md) var(--boros-spacing-component-lg);
+  background: var(--boros-background-surface);
+  border-top: 1px solid var(--boros-border-primary);
+}
+
+.alertExpandedText {
+  flex: 1;
+  font-size: var(--boros-primitive-text-size-sm-default);
+  color: var(--boros-text-secondary);
+}
+
+.alertExpandedInput {
+  display: flex;
+  align-items: center;
+  gap: var(--boros-spacing-component-xs);
+  flex: 1;
+}
+
+.thresholdInput {
+  width: 5rem;
+  padding: 0.25rem 0.5rem;
+  border-radius: var(--boros-radius-rounded-md);
+  border: 1px solid var(--boros-border-secondary);
+  background: var(--boros-background-primary);
+  color: var(--boros-text-primary);
+  font-size: var(--boros-primitive-text-size-sm-default);
+  outline: none;
+}
+
+.thresholdInput:focus {
+  border-color: var(--boros-tab-navigation-tab-active);
+}
+
+.thresholdUnit {
+  font-size: var(--boros-primitive-text-size-sm-default);
+  color: var(--boros-text-secondary);
+}
+
+.alertExpandedActions {
+  display: flex;
+  gap: var(--boros-spacing-component-sm);
+  flex-shrink: 0;
+}
+
+.btnCancel {
+  padding: 0.25rem 0.625rem;
+  border-radius: var(--boros-radius-rounded-md);
+  border: 1px solid var(--boros-border-secondary);
+  font-size: var(--boros-primitive-text-size-xs-caption);
+  font-weight: 500;
+  color: var(--boros-text-secondary);
+  cursor: pointer;
+  transition: background 150ms ease;
+}
+
+.btnCancel:hover {
+  background: var(--boros-background-primary);
+}
+
+.btnRemove {
+  padding: 0.25rem 0.625rem;
+  border-radius: var(--boros-radius-rounded-md);
+  border: 1px solid var(--boros-border-error);
+  background: var(--boros-background-negative-or-short-weak);
+  font-size: var(--boros-primitive-text-size-xs-caption);
+  font-weight: 600;
+  color: var(--boros-text-error);
+  cursor: pointer;
+  transition: background 150ms ease;
+}
+
+.btnRemove:hover {
+  background: var(--boros-border-error);
+  color: var(--boros-background-primary);
+}
+
+.btnSave {
+  padding: 0.25rem 0.625rem;
+  border-radius: var(--boros-radius-rounded-md);
+  background: var(--boros-tab-navigation-tab-active);
+  font-size: var(--boros-primitive-text-size-xs-caption);
+  font-weight: 600;
+  color: var(--boros-background-primary);
+  cursor: pointer;
+  transition: opacity 150ms ease;
+}
+
+.btnSave:hover {
+  opacity: 0.85;
+}
+
+.addAlertButton {
+  align-self: flex-start;
+  margin-top: var(--boros-spacing-component-xs);
+  padding: var(--boros-spacing-component-xs) var(--boros-spacing-component-md);
+  border-radius: var(--boros-radius-rounded-md);
+  font-size: var(--boros-primitive-text-size-xs-caption);
+  font-weight: 600;
+  color: var(--boros-text-info);
+  background: var(--boros-tag-background-info-weak);
+  border: 1px solid var(--boros-background-info-weak);
+  cursor: pointer;
+  transition: background 150ms ease, border-color 150ms ease;
+}
+
+.addAlertButton:hover {
+  background: var(--boros-button-primary-outline-background-hover);
+  border-color: var(--boros-tag-background-info-strong);
+}
+
+/* ── Wizard header ────────────────────────────────────────────── */
+.backBtn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.75rem;
+  height: 1.75rem;
+  border-radius: var(--boros-radius-rounded-md);
+  color: var(--boros-icon-secondary);
+  cursor: pointer;
+  flex-shrink: 0;
+  transition: color 150ms ease, background 150ms ease;
+}
+
+.backBtn:hover {
+  color: var(--boros-icon-primary);
+  background: var(--boros-icon-icon-background);
+}
+
+.wizardHeaderCenter {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.125rem;
+}
+
+.stepLabel {
+  font-size: var(--boros-primitive-text-size-xs-caption);
+  color: var(--boros-text-inactive);
+  font-weight: 500;
+}
+
+/* ── Wizard body ──────────────────────────────────────────────── */
+.wizardBody {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+/* ── Step 1: market search + list ────────────────────────────── */
+.wizardSearchWrap {
+  padding: var(--boros-layout-padding-modals);
+  padding-bottom: var(--boros-spacing-component-md);
+  flex-shrink: 0;
+  border-bottom: 1px solid var(--boros-border-primary);
+}
+
+.wizardSearch {
+  width: 100%;
+  padding: var(--boros-spacing-component-md) var(--boros-spacing-component-lg);
+  border-radius: var(--boros-radius-rounded-md);
+  border: 1px solid var(--boros-border-secondary);
+  background: var(--boros-background-surface);
+  color: var(--boros-text-primary);
+  font-size: var(--boros-primitive-text-size-sm-default);
+  outline: none;
+  transition: border-color 150ms ease;
+}
+
+.wizardSearch::placeholder {
+  color: var(--boros-text-inactive);
+}
+
+.wizardSearch:focus {
+  border-color: var(--boros-tab-navigation-tab-active);
+}
+
+.marketList {
+  flex: 1;
+  overflow-y: auto;
+  scrollbar-width: thin;
+  scrollbar-color: var(--boros-border-secondary) transparent;
+}
+
+.marketList::-webkit-scrollbar { width: 4px; }
+.marketList::-webkit-scrollbar-track { background: transparent; }
+.marketList::-webkit-scrollbar-thumb {
+  background: var(--boros-border-secondary);
+  border-radius: var(--boros-radius-rounded-full);
+}
+
+.marketRow {
+  display: flex;
+  align-items: center;
+  gap: var(--boros-spacing-component-md);
+  width: 100%;
+  padding: var(--boros-spacing-component-lg) var(--boros-layout-padding-modals);
+  border-bottom: 1px solid var(--boros-border-primary);
+  cursor: pointer;
+  text-align: left;
+  transition: background 150ms ease;
+}
+
+.marketRow:last-child {
+  border-bottom: none;
+}
+
+.marketRow:hover {
+  background: var(--boros-background-surface);
+}
+
+.marketIcon {
+  width: 2rem;
+  height: 2rem;
+  border-radius: var(--boros-radius-rounded-full);
+  background: var(--boros-background-surface);
+  border: 1px solid var(--boros-border-secondary);
+  flex-shrink: 0;
+}
+
+.marketInfo {
+  display: flex;
+  flex-direction: column;
+  gap: 0.125rem;
+}
+
+.marketName {
+  font-size: var(--boros-primitive-text-size-sm-default);
+  font-weight: 600;
+  color: var(--boros-text-primary);
+}
+
+.marketMaturity {
+  font-size: var(--boros-primitive-text-size-xs-caption);
+  color: var(--boros-text-secondary);
+}
+
+.marketEmpty {
+  padding: var(--boros-layout-padding-modals);
+  font-size: var(--boros-primitive-text-size-sm-default);
+  color: var(--boros-text-inactive);
+  text-align: center;
+}
+
+/* ── Steps 2 & 3: scrollable content ─────────────────────────── */
+.wizardStep {
+  flex: 1;
+  overflow-y: auto;
+  padding: var(--boros-layout-padding-modals);
+  display: flex;
+  flex-direction: column;
+  gap: var(--boros-spacing-component-lg);
+  scrollbar-width: thin;
+  scrollbar-color: var(--boros-border-secondary) transparent;
+}
+
+.wizardStep::-webkit-scrollbar { width: 4px; }
+.wizardStep::-webkit-scrollbar-track { background: transparent; }
+.wizardStep::-webkit-scrollbar-thumb {
+  background: var(--boros-border-secondary);
+  border-radius: var(--boros-radius-rounded-full);
+}
+
+.wizardMarketPill {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--boros-spacing-component-sm);
+  align-self: flex-start;
+  padding: 0.25rem 0.625rem;
+  border-radius: var(--boros-radius-rounded-full);
+  background: var(--boros-background-surface);
+  border: 1px solid var(--boros-border-secondary);
+  font-size: var(--boros-primitive-text-size-sm-default);
+  font-weight: 600;
+  color: var(--boros-text-primary);
+}
+
+.wizardMarketDot {
+  width: 0.5rem;
+  height: 0.5rem;
+  border-radius: var(--boros-radius-rounded-full);
+  background: var(--boros-text-success);
+  flex-shrink: 0;
+}
+
+/* ── Alert type radio list ────────────────────────────────────── */
+.alertTypeList {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid var(--boros-border-primary);
+  border-radius: var(--boros-radius-rounded-md);
+  overflow: hidden;
+}
+
+.alertTypeRow {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--boros-spacing-component-md);
+  padding: var(--boros-spacing-component-lg);
+  border-bottom: 1px solid var(--boros-border-primary);
+  cursor: pointer;
+  transition: background 150ms ease;
+}
+
+.alertTypeRow:last-child {
+  border-bottom: none;
+}
+
+.alertTypeRow:hover {
+  background: var(--boros-background-surface);
+}
+
+.alertTypeRowSelected {
+  background: var(--boros-background-surface);
+}
+
+.alertTypeRadio {
+  margin-top: 0.2rem;
+  accent-color: var(--boros-tab-navigation-tab-active);
+  flex-shrink: 0;
+  cursor: pointer;
+}
+
+.alertTypeContent {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+}
+
+.alertTypeLabel {
+  font-size: var(--boros-primitive-text-size-sm-default);
+  font-weight: 600;
+  color: var(--boros-text-primary);
+}
+
+.alertTypeDesc {
+  font-size: var(--boros-primitive-text-size-xs-caption);
+  color: var(--boros-text-secondary);
+}
+
+/* ── Inline alert config (direction + threshold + continue) ───── */
+.alertConfig {
+  display: flex;
+  flex-direction: column;
+  gap: var(--boros-spacing-component-md);
+  padding: var(--boros-spacing-component-lg);
+  border: 1px solid var(--boros-border-primary);
+  border-radius: var(--boros-radius-rounded-md);
+  background: var(--boros-background-surface);
+}
+
+.directionToggle {
+  display: flex;
+  border: 1px solid var(--boros-border-secondary);
+  border-radius: var(--boros-radius-rounded-md);
+  overflow: hidden;
+}
+
+.directionBtn {
+  flex: 1;
+  padding: var(--boros-spacing-component-sm) 0;
+  font-size: var(--boros-primitive-text-size-sm-default);
+  font-weight: 500;
+  color: var(--boros-text-secondary);
+  cursor: pointer;
+  transition: background 150ms ease, color 150ms ease;
+}
+
+.directionBtnActive {
+  background: var(--boros-tab-navigation-tab-active);
+  color: var(--boros-background-primary);
+  font-weight: 600;
+}
+
+.thresholdRow {
+  display: flex;
+  align-items: center;
+  gap: var(--boros-spacing-component-sm);
+}
+
+.continueBtn {
+  width: 100%;
+  padding: var(--boros-spacing-component-md);
+  border-radius: var(--boros-radius-rounded-md);
+  background: var(--boros-tab-navigation-tab-active);
+  font-size: var(--boros-primitive-text-size-sm-default);
+  font-weight: 600;
+  color: var(--boros-background-primary);
+  cursor: pointer;
+  transition: opacity 150ms ease;
+}
+
+.continueBtn:disabled {
+  opacity: 0.35;
+  cursor: not-allowed;
+}
+
+.continueBtn:not(:disabled):hover {
+  opacity: 0.85;
+}
+
+/* ── Step 3: confirm summary ──────────────────────────────────── */
+.confirmSummary {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid var(--boros-border-primary);
+  border-radius: var(--boros-radius-rounded-md);
+  overflow: hidden;
+}
+
+.confirmRow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--boros-spacing-component-md) var(--boros-spacing-component-lg);
+  border-bottom: 1px solid var(--boros-border-primary);
+}
+
+.confirmRow:last-child {
+  border-bottom: none;
+}
+
+.confirmLabel {
+  font-size: var(--boros-primitive-text-size-sm-default);
+  color: var(--boros-text-secondary);
+}
+
+.confirmValue {
+  font-size: var(--boros-primitive-text-size-sm-default);
+  font-weight: 600;
+  color: var(--boros-text-primary);
+}
+
+/* ── Step 3: delivery checkboxes ─────────────────────────────── */
+.deliverySection {
+  display: flex;
+  flex-direction: column;
+  gap: var(--boros-spacing-component-md);
+}
+
+.deliveryLabel {
+  font-size: var(--boros-primitive-text-size-xs-caption);
+  font-weight: 600;
+  color: var(--boros-text-inactive);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.deliveryOptions {
+  display: flex;
+  flex-direction: column;
+  gap: var(--boros-spacing-component-sm);
+}
+
+.deliveryOption {
+  display: flex;
+  align-items: center;
+  gap: var(--boros-spacing-component-md);
+  cursor: pointer;
+}
+
+.deliveryOptionLabel {
+  font-size: var(--boros-primitive-text-size-sm-default);
+  color: var(--boros-text-primary);
+}
+
+/* ── Create alert button ──────────────────────────────────────── */
+.createAlertBtn {
+  width: 100%;
+  padding: var(--boros-spacing-component-md);
+  border-radius: var(--boros-radius-rounded-md);
+  background: var(--boros-tab-navigation-tab-active);
+  font-size: var(--boros-primitive-text-size-sm-default);
+  font-weight: 600;
+  color: var(--boros-background-primary);
+  cursor: pointer;
+  margin-top: auto;
+  transition: opacity 150ms ease;
+}
+
+.createAlertBtn:hover {
+  opacity: 0.85;
+}
