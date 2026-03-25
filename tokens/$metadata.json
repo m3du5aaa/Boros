@@ -1,0 +1,10 @@
+{
+  "tokenSetOrder": [
+    "global",
+    "Boros - Primitives/Mode 1",
+    "Boros - Theme/Mode 1",
+    "Boros - Layout + Device/Web",
+    "Boros - Layout + Device/Mobile",
+    "Boros - Spacing + Density/Compact"
+  ]
+}

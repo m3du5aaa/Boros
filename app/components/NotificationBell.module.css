@@ -1,0 +1,322 @@
+/* ── Bell button ──────────────────────────────────────────────── */
+.bellButton {
+  position: fixed;
+  top: 1rem;
+  right: 1.25rem;
+  z-index: 60;
+  width: 2.25rem;
+  height: 2.25rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--boros-primitive-radius-rounded-md-default);
+  background: var(--boros-primitive-colors-water-800);
+  border: 1px solid var(--boros-primitive-colors-water-700-alpha30);
+  color: var(--boros-primitive-colors-water-200);
+  cursor: pointer;
+  transition: background 150ms ease, color 150ms ease;
+}
+
+.bellButton:hover {
+  background: var(--boros-primitive-colors-water-700);
+  color: var(--boros-primitive-colors-mono-50);
+}
+
+.bellButton.active {
+  background: var(--boros-primitive-colors-water-700);
+  color: var(--boros-primitive-colors-mono-50);
+}
+
+.badge {
+  position: absolute;
+  top: -0.3rem;
+  right: -0.3rem;
+  min-width: 1rem;
+  height: 1rem;
+  padding: 0 0.25rem;
+  border-radius: var(--boros-primitive-radius-rounded-full);
+  background: var(--boros-primitive-colors-red-solid);
+  color: var(--boros-primitive-colors-mono-white);
+  font-size: var(--boros-primitive-text-size-2xs-small-caption-footer);
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 1;
+  pointer-events: none;
+}
+
+/* ── Backdrop ─────────────────────────────────────────────────── */
+.backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 49;
+  background: var(--boros-primitive-colors-mono-black-alpha80);
+}
+
+/* ── Panel ────────────────────────────────────────────────────── */
+.panel {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  width: 22rem;
+  z-index: 50;
+  display: flex;
+  flex-direction: column;
+  background: var(--boros-primitive-colors-water-900);
+  border-left: 1px solid var(--boros-primitive-colors-water-800);
+  transform: translateX(100%);
+  transition: transform 240ms cubic-bezier(0.4, 0, 0.2, 1);
+  overflow: hidden;
+}
+
+.panel.open {
+  transform: translateX(0);
+  box-shadow: -8px 0 32px var(--boros-primitive-colors-mono-black-alpha80);
+}
+
+/* ── Header ───────────────────────────────────────────────────── */
+.header {
+  display: flex;
+  align-items: center;
+  gap: var(--boros-primitive-spacing-md);
+  padding: var(--boros-primitive-spacing-xl) var(--boros-primitive-spacing-xl) var(--boros-primitive-spacing-lg);
+  border-bottom: 1px solid var(--boros-primitive-colors-water-800);
+  flex-shrink: 0;
+}
+
+.headerTitle {
+  flex: 1;
+  font-size: var(--boros-primitive-text-size-base-small-heading);
+  font-weight: 600;
+  color: var(--boros-primitive-colors-mono-50);
+  letter-spacing: 0.01em;
+}
+
+.iconButton {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.75rem;
+  height: 1.75rem;
+  border-radius: var(--boros-primitive-radius-rounded-md-default);
+  color: var(--boros-primitive-colors-water-400);
+  cursor: pointer;
+  transition: color 150ms ease, background 150ms ease;
+  flex-shrink: 0;
+}
+
+.iconButton:hover {
+  color: var(--boros-primitive-colors-water-200);
+  background: var(--boros-primitive-colors-water-200-alpha-10);
+}
+
+.markAllRead {
+  font-size: var(--boros-primitive-text-size-xs-caption);
+  color: var(--boros-primitive-colors-sky-solid);
+  cursor: pointer;
+  white-space: nowrap;
+  transition: color 150ms ease;
+}
+
+.markAllRead:hover {
+  color: var(--boros-primitive-colors-sky-alpha90);
+}
+
+/* ── Tabs ─────────────────────────────────────────────────────── */
+.tabs {
+  display: flex;
+  gap: 0;
+  padding: 0 var(--boros-primitive-spacing-xl);
+  border-bottom: 1px solid var(--boros-primitive-colors-water-800);
+  flex-shrink: 0;
+}
+
+.tab {
+  padding: var(--boros-primitive-spacing-md) var(--boros-primitive-spacing-lg);
+  font-size: var(--boros-primitive-text-size-sm-default);
+  font-weight: 500;
+  color: var(--boros-primitive-colors-water-400);
+  cursor: pointer;
+  border-bottom: 2px solid transparent;
+  margin-bottom: -1px;
+  transition: color 150ms ease, border-color 150ms ease;
+}
+
+.tab:hover {
+  color: var(--boros-primitive-colors-water-200);
+}
+
+.tabActive {
+  color: var(--boros-primitive-colors-sky-solid);
+  border-bottom-color: var(--boros-primitive-colors-sky-solid);
+}
+
+/* ── Notification list ────────────────────────────────────────── */
+.list {
+  flex: 1;
+  overflow-y: auto;
+  scrollbar-width: thin;
+  scrollbar-color: var(--boros-primitive-colors-water-700) transparent;
+}
+
+.list::-webkit-scrollbar {
+  width: 4px;
+}
+
+.list::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.list::-webkit-scrollbar-thumb {
+  background: var(--boros-primitive-colors-water-700);
+  border-radius: var(--boros-primitive-radius-rounded-full);
+}
+
+/* ── Empty state ──────────────────────────────────────────────── */
+.empty {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 12rem;
+  font-size: var(--boros-primitive-text-size-sm-default);
+  color: var(--boros-primitive-colors-water-500);
+}
+
+/* ── Notification row ─────────────────────────────────────────── */
+.row {
+  position: relative;
+  display: flex;
+  align-items: flex-start;
+  gap: var(--boros-primitive-spacing-md);
+  padding: var(--boros-primitive-spacing-lg) var(--boros-primitive-spacing-xl);
+  border-bottom: 1px solid var(--boros-primitive-colors-water-200-alpha-5);
+  transition: background 150ms ease;
+  cursor: default;
+}
+
+.row:hover {
+  background: var(--boros-primitive-colors-water-200-alpha-5);
+}
+
+.row:last-child {
+  border-bottom: none;
+}
+
+/* unread dot column */
+.dotCol {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 0.5rem;
+  flex-shrink: 0;
+  padding-top: 0.3rem;
+}
+
+.dot {
+  width: 0.5rem;
+  height: 0.5rem;
+  border-radius: var(--boros-primitive-radius-rounded-full);
+  background: var(--boros-primitive-colors-sky-solid);
+  flex-shrink: 0;
+  transition: opacity 150ms ease;
+}
+
+.rowRead .dot {
+  opacity: 0;
+}
+
+/* content */
+.content {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--boros-primitive-spacing-xs);
+}
+
+.rowTop {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: var(--boros-primitive-spacing-md);
+}
+
+.title {
+  font-size: var(--boros-primitive-text-size-sm-default);
+  font-weight: 600;
+  color: var(--boros-primitive-colors-mono-50);
+  line-height: 1.4;
+}
+
+.rowRead .title {
+  color: var(--boros-primitive-colors-water-400);
+}
+
+.timestamp {
+  font-size: var(--boros-primitive-text-size-xs-caption);
+  color: var(--boros-primitive-colors-water-500);
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.body {
+  font-size: var(--boros-primitive-text-size-xs-caption);
+  color: var(--boros-primitive-colors-water-300);
+  line-height: 1.5;
+  word-break: break-word;
+}
+
+.rowRead .body {
+  color: var(--boros-primitive-colors-water-500);
+}
+
+/* CTA button */
+.cta {
+  align-self: flex-start;
+  margin-top: var(--boros-primitive-spacing-xs);
+  padding: var(--boros-primitive-spacing-xs) var(--boros-primitive-spacing-md);
+  border-radius: var(--boros-primitive-radius-rounded-md-default);
+  font-size: var(--boros-primitive-text-size-xs-caption);
+  font-weight: 600;
+  color: var(--boros-primitive-colors-sky-solid);
+  background: var(--boros-primitive-colors-sky-alpha10);
+  border: 1px solid var(--boros-primitive-colors-sky-alpha20);
+  cursor: pointer;
+  transition: background 150ms ease, border-color 150ms ease;
+}
+
+.cta:hover {
+  background: var(--boros-primitive-colors-sky-alpha20);
+  border-color: var(--boros-primitive-colors-sky-alpha30);
+}
+
+/* hover checkmark */
+.checkmark {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.5rem;
+  height: 1.5rem;
+  flex-shrink: 0;
+  border-radius: var(--boros-primitive-radius-rounded-md-default);
+  color: var(--boros-primitive-colors-water-500);
+  opacity: 0;
+  transition: opacity 150ms ease, color 150ms ease, background 150ms ease;
+  cursor: pointer;
+}
+
+.row:hover .checkmark {
+  opacity: 1;
+}
+
+.checkmark:hover {
+  color: var(--boros-primitive-colors-emerald-solid);
+  background: var(--boros-primitive-colors-emerald-alpha10);
+}
+
+.rowRead .checkmark:hover {
+  color: var(--boros-primitive-colors-water-300);
+  background: var(--boros-primitive-colors-water-200-alpha-10);
+}
